@@ -7,6 +7,7 @@ import {
 import React from 'react'
 import MainLayout from './layouts/MainLayout';
 import HomePage from './pages/HomePage';
+import JobsPage from './pages/JobsPage';
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
     createRoutesFromElements(
       <Route path='/' element={<MainLayout />}>
         <Route index element={<HomePage />} />
+        <Route path='/jobs' element={<JobsPage />} />
       </Route>
     )
   )
