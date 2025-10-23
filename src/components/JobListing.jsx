@@ -25,7 +25,7 @@ const JobListing = ({job}) => {
 
         <button
             onClick={() => setShowFullDescription((prevState) => !prevState)}
-            clasName="text-indigo-500 mb-4 hover:text-indigo-800"
+            className="text-indigo-500 mb-4 hover:text-indigo-800"
         >
             {showFullDescription ? 'Less' : 'More'}
         </button>
@@ -36,9 +36,8 @@ const JobListing = ({job}) => {
 
         <div className="flex flex-col lg:flex-row justify-between mb-4">
             <div className="text-orange-700 mb-3">
-                 <FaMapMarker
-                                    className="fa-solid fa-location-dot text-lg text-orange-700 mr-2"
-                                    /> {job.location}
+                 <FaMapMarker className="fa-solid fa-location-dot text-lg text-orange-700 mr-2"
+                    /> {job.location}
             </div>
             <Link
             to={`/job/${job.id}`}
