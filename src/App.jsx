@@ -10,6 +10,7 @@ import HomePage from './pages/HomePage';
 import JobsPage from './pages/JobsPage';
 import JobPage, {jobLoader} from './pages/JobPage';
 import AddJobPage from './pages/AddJobPage';
+import NotFoundPage from './pages/NotFoundPage';
 
 function App() {
 
@@ -40,6 +41,7 @@ function App() {
         <Route path='/jobs' element={<JobsPage />} />
         <Route path='/job/:id' element={<JobPage deleteJob={deleteJob} />} loader={jobLoader}/>
         <Route path='/add-job' element={<AddJobPage addJobSubmit={addJob} />} />
+        <Route path ='*' element={<NotFoundPage />} />
       </Route>
     )
   )
