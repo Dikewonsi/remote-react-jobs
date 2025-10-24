@@ -29,20 +29,6 @@
       }
     },
     {
-      "id": "3",
-      "title": "React.js Dev",
-      "type": "Full-Time",
-      "location": "Brooklyn, NY",
-      "description": "Are you passionate about front-end development? Join our team in vibrant Brooklyn, NY, and work on exciting projects that make a difference. We offer competitive compensation and a collaborative work environment where your ideas are valued.",
-      "salary": "$70K - $80K",
-      "company": {
-        "name": "Dolor Cloud",
-        "description": "Dolor Cloud is a leading technology company specializing in digital solutions for businesses of all sizes. With a focus on innovation and customer satisfaction, we are committed to delivering cutting-edge products and services.",
-        "contactEmail": "contact@dolorsitamet.com",
-        "contactPhone": "555-555-5551"
-      }
-    },
-    {
       "id": "4",
       "title": "React Front-End Developer",
       "type": "Part-Time",
@@ -99,45 +85,17 @@
       }
     },
     {
-      "id": "529a",
-      "title": "duefbnikn",
+      "id": "de90",
+      "title": "wdeknf",
       "type": "Full-Time",
-      "location": "qwerufj",
-      "description": "qwejrnk",
+      "location": "qwiernfgk",
+      "description": "qiwenrk",
       "salary": "Under $50K",
       "company": {
-        "name": "qwer",
-        "description": "qwe",
+        "name": "qwerik",
+        "description": "qwer",
         "contactEmail": "qwe@fn.com",
-        "contactPhone": "qwerfd"
-      }
-    },
-    {
-      "id": "ad30",
-      "title": "duefbnikn",
-      "type": "Full-Time",
-      "location": "qwerufj",
-      "description": "qwejrnk",
-      "salary": "Under $50K",
-      "company": {
-        "name": "qwer",
-        "description": "qwe",
-        "contactEmail": "qwe@fn.com",
-        "contactPhone": "qwerfd"
-      }
-    },
-    {
-      "id": "0b8c",
-      "title": "duefbnikn",
-      "type": "Full-Time",
-      "location": "qwerufj",
-      "description": "qwejrnk",
-      "salary": "Under $50K",
-      "company": {
-        "name": "qwer",
-        "description": "qwe",
-        "contactEmail": "qwe@fn.com",
-        "contactPhone": "qwerfd"
+        "contactPhone": "qwe"
       }
     }
   ]

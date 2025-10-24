@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify';
 
 
 const AddJobPage = ({addJobSubmit}) => {
@@ -34,6 +35,8 @@ const AddJobPage = ({addJobSubmit}) => {
         };
 
         addJobSubmit(newJob);
+
+        toast.success('Job added successfully');
         
         navigate('/jobs');
     }
@@ -49,8 +52,7 @@ const AddJobPage = ({addJobSubmit}) => {
 
             <div className="mb-4">
               <label htmlFor="type" className="block text-gray-700 font-bold mb-2"
-                >Job Type</label
-              >
+                >Job Type</label>
               <select
                 id="type"
                 name="type"
@@ -68,8 +70,7 @@ const AddJobPage = ({addJobSubmit}) => {
 
             <div className="mb-4">
               <label className="block text-gray-700 font-bold mb-2"
-                >Job Listing Name</label
-              >
+                >Job Listing Name</label>
               <input
                 type="text"
                 id="title"
@@ -85,8 +86,7 @@ const AddJobPage = ({addJobSubmit}) => {
               <label
                 htmlFor="description"
                 className="block text-gray-700 font-bold mb-2"
-                >Description</label
-              >
+                >Description</label>
               <textarea
                 id="description"
                 name="description"
@@ -100,8 +100,7 @@ const AddJobPage = ({addJobSubmit}) => {
 
             <div className="mb-4">
               <label htmlFor="type" className="block text-gray-700 font-bold mb-2"
-                >Salary</label
-              >
+                >Salary</label>
               <select
                 id="salary"
                 name="salary"
@@ -144,8 +143,7 @@ const AddJobPage = ({addJobSubmit}) => {
 
             <div className="mb-4">
               <label htmlFor="company" className="block text-gray-700 font-bold mb-2"
-                >Company Name</label
-              >
+                >Company Name</label>
               <input
                 type="text"
                 id="company"
@@ -161,8 +159,7 @@ const AddJobPage = ({addJobSubmit}) => {
               <label
                 htmlFor="company_description"
                 className="block text-gray-700 font-bold mb-2"
-                >Company Description</label
-              >
+                >Company Description</label>
               <textarea
                 id="company_description"
                 name="company_description"
@@ -178,8 +175,7 @@ const AddJobPage = ({addJobSubmit}) => {
               <label
                 htmlFor="contact_email"
                 className="block text-gray-700 font-bold mb-2"
-                >Contact Email</label
-              >
+                >Contact Email</label>
               <input
                 type="email"
                 id="contact_email"
@@ -195,8 +191,7 @@ const AddJobPage = ({addJobSubmit}) => {
               <label
                 htmlFor="contact_phone"
                 className="block text-gray-700 font-bold mb-2"
-                >Contact Phone</label
-              >
+                >Contact Phone</label>
               <input
                 type="tel"
                 id="contact_phone"
