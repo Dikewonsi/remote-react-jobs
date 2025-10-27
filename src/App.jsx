@@ -12,6 +12,7 @@ import JobPage, {jobLoader} from './pages/JobPage';
 import AddJobPage from './pages/AddJobPage';
 import NotFoundPage from './pages/NotFoundPage';
 import EditJobPage from './pages/EditJobPage';
+import FavoriteJobsPage from './pages/FavoriteJobsPage';
 
 
 function App() {
@@ -58,6 +59,7 @@ function App() {
         <Route path='/job/:id' element={<JobPage deleteJob={deleteJob} />} loader={jobLoader}/>
         <Route path='/add-job' element={<AddJobPage addJobSubmit={addJob} />} />
         <Route path='/edit-job/:id' element={<EditJobPage updateJobSubmit={updateJob} />} loader={jobLoader} />
+        <Route path='/favorite-jobs' element={<FavoriteJobsPage />} />
         <Route path ='*' element={<NotFoundPage />} />
       </Route>
     )

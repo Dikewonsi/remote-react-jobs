@@ -1,10 +1,31 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { useState } from 'react'
-import { FaMapMarker } from 'react-icons/fa'
+import { useState, useEffect } from 'react'
+import { FaMapMarker, FaHeart } from 'react-icons/fa'
 
 const JobListing = ({job}) => {
     const [showFullDescription, setShowFullDescription] = useState(false);
+    const [isFavorite, setIsFavorite] = useState(false)
+
+    useEffect (() =>{
+        const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+        setIsFavorite(favorites.includes(job.id));
+    }, [job.id])
+
+    const toggleFavorite = () => {
+        let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+
+        if (favorites.includes(job.id)) {
+            favorites = favorites.filter(id => id !== job.id);
+            setIsFavorite(false);
+        } else {
+            favorites.push(job.id);
+            setIsFavorite(true);
+        }
+
+        localStorage.setItem('favorites', JSON.stringify(favorites));
+    }
+
 
     let description = job.description;
 
@@ -19,6 +40,14 @@ const JobListing = ({job}) => {
             <h3 className="text-xl font-bold">{job.title}</h3>
         </div>
 
+        <button 
+            onClick={toggleFavorite}
+            className={`absolute top-4 right-4 text-xl ${
+                isFavorite ? 'text-red-500' : 'text-gray-400 hover:text-red-500'
+            }`}
+        >
+            <FaHeart />
+        </button>
         <div className="mb-5">
             {description}
         </div>
