@@ -19,19 +19,19 @@ const FavoriteJobsPage = () => {
             setJobs(favoriteJobs);
         };
 
-        fetchJobs
+        fetchJobs();
     }, []);
 
   return (
     <section className="bg-blue-50 px-4 py-10">
         <div className="container-xl lg:container m-auto">
-            <h2 className="text-3xl font-bold text-indigo-500 mb-6 text-center">
-                <FaHeart /> Favorite Jobs
-            </h2>
+            <h2 className="text-3xl font-bold text-indigo-500 mb-6 text-center flex items-center justify-center gap-2">
+  <FaHeart className="text-red-500" /> Favorite Jobs
+</h2>
 
             {jobs.length > 0 ? (
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    {jobs.mpa(job => (
+                    {jobs.map(job => (
                         <JobListing key={job.id} job={job} />
                     ))}
                 </div>

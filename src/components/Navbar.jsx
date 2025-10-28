@@ -85,6 +85,11 @@ const Navbar = () => {
                   className={linkClass}
                   >Add Job
                 </NavLink>
+                <NavLink
+                  to="/favorite-jobs"
+                  className={linkClass}
+                  >Favorites
+                </NavLink>
 
                 {/* Search Form */}
                 <form
