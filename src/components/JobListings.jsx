@@ -14,50 +14,58 @@ const JobListings = ({ isHome = false }) => {
   // Here Joblisting reads the query in the URL 
   const query = new URLSearchParams(location.search);
   const searchTerm = query.get("search");
+  
+  useEffect(() => {
+  const fetchJobs = async () => {
+    setLoading(true);
 
-  useEffect (() => {
-    const fetchJobs = async () => {
-      const apiUrl = isHome
-        ? '/api/jobs?_limit=3'
-        : '/api/jobs';
-      try {
-        const res = await fetch(apiUrl)
-        const data = await res.json()
+    try {
+      const res = await fetch('http://localhost:5001/jobs');
 
-        let result = [];
-        
-        if (searchTerm) {
-          result = data.filter(
-            (job) =>
-              job.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-              job.company.name.toLowerCase().includes(searchTerm.toLowerCase())
-          );
-        } else {
-          result = data;
-        }
-
-        // Apply sorting
-       if (sortOption === 'asc') {
-  result.sort((a, b) => parseSalary(a.salary) - parseSalary(b.salary));
-} else if (sortOption === 'desc') {
-  result.sort((a, b) => parseSalary(b.salary) - parseSalary(a.salary));
-}
-
-
-        setJobs(result);
-
-
-      } catch (error) {
-        console.error('Error fethcing Jobs', error)
-      } finally {
-        setLoading(false)
+      if (!res.ok) {
+        throw new Error("Failed to fetch job list");
       }
+
+      // ✅ Read JSON ONCE
+      const allJobs = await res.json();
+
+      let result = allJobs;
+
+      // If home page, show only 3 jobs
+      if (isHome) {
+        result = allJobs.slice(0, 3);
+      }
+
+      // Search filtering
+      if (searchTerm) {
+        result = allJobs.filter(
+          (job) =>
+            job.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            job.company.name.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+      }
+
+      // Apply sorting
+      if (sortOption === 'asc') {
+        result.sort((a, b) => parseSalary(a.salary) - parseSalary(b.salary));
+      } else if (sortOption === 'desc') {
+        result.sort((a, b) => parseSalary(b.salary) - parseSalary(a.salary));
+      }
+
+      setJobs(result);
+
+    } catch (error) {
+      console.error("Error fetching jobs:", error);
+
+    } finally {
+      setLoading(false);
     }
+  };
 
-    fetchJobs()
-  }, [searchTerm]);
+  fetchJobs();
+}, [searchTerm, sortOption, isHome]);
 
-  // Extracts an average numeric salary value from strings like "$50K - $60K"
+  
   const parseSalary = (salaryStr) => {
     if (!salaryStr) return 0;
 
@@ -77,7 +85,7 @@ const JobListings = ({ isHome = false }) => {
   };
 
   useEffect(() => {
-  if (jobs.length > 0) {
+  if (jobs && jobs.length > 0) {
     const sortedJobs = [...jobs];
 
     if (sortOption === 'asc') {
@@ -116,7 +124,7 @@ const JobListings = ({ isHome = false }) => {
           <div className="flex justify-center items-center min-h-[300px]">
             <Spinner loading={loading} />
           </div>
-        ) : jobs.length > 0 ? (
+        ) : jobs && jobs.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {jobs.map((job) => (
               <JobListing key={job.id} job={job} />

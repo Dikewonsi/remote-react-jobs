@@ -13,7 +13,7 @@ const FavoriteJobsPage = () => {
         setFavorites(favIds);
 
         const fetchJobs = async () => {
-            const res = await fetch('/api/jobs');
+            const res = await fetch('http://localhost:5001/jobs/');
             const data = await res.json();
             const favoriteJobs = data.filter(job => favIds.includes(job.id));
             setJobs(favoriteJobs);

@@ -19,7 +19,7 @@ function App() {
 
   // Add New Job
   const addJob = async (newJob) => {
-    const res = await fetch('/api/jobs', {
+    const res = await fetch('http://localhost:5001/jobs/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -31,7 +31,7 @@ function App() {
 
   // Delete Job
   const deleteJob = async (id) => {
-    const  res = await fetch(`/api/jobs/${id}`, {
+    const  res = await fetch(`http://localhost:5001/jobs/${id}`, {
       method: 'DELETE'
     });
     return;
@@ -39,7 +39,7 @@ function App() {
 
   // Update Job
   const updateJob = async (job) => {
-    const res = await fetch(`/api/jobs/${job.id}`, {
+    const res = await fetch(`http://localhost:5001/jobs/${job.id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'applications/json',

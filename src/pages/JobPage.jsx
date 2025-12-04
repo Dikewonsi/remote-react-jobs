@@ -119,16 +119,16 @@ const JobPage = ({deleteJob}) => {
   )
 };
 
-const jobLoader = async ({params}) => {
-    const res = await fetch(`/api/jobs/${params.id}`);
+// jobLoader.js (or inside JobPage.jsx)
+const jobLoader = async ({ params }) => {
+  const res = await fetch(`http://localhost:5001/jobs/${params.id}`);
 
-    if (!res.ok) {
-        throw new Response("Job not found", { status: 404 });
-    }
+   if (!res.ok) {
+    throw new Response("Job not found", { status: 404 });
+  }
 
-    const data = res.json();
-    return data;
+  return res.json(); // returns the single job object
+};
 
-}
 
 export {JobPage as default, jobLoader};
